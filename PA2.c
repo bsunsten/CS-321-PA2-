@@ -5,7 +5,7 @@
 #include <endian.h>
 
 
-int main () {
+int main (int argc, char *argv[]) {
 
   FILE *fp = fopen("tmp.txt.machine", "r");
 
@@ -36,7 +36,7 @@ int main () {
   }
 
 
-  printf("The contents of the buffer: %x \n", (unsigned long)buffer[0]);
+  printf("The contents of the buffer: %x \n", (unsigned long)buffer[1]);
 
   fclose(fp);
   return 0;
@@ -50,3 +50,5 @@ int main () {
   
 
 }
+
+
