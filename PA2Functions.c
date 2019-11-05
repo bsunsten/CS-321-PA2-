@@ -3,22 +3,19 @@
 #include <stdint.h> 
 
 
-enum week{Mon, Tue};
-enum week day; 
-day = Wed; 
 
-enum registers{X0=000000, X1=000001, X2=000010, X3=000011, X4=000100, X5=000101, 
-X6=000110, X7=000111, X8=001000, X9=001001, X10=001010, X11=001011, X12=001100, 
-X13=001101, X14=001110, X15=001111, X16=010000, X17=010001, X18=010010, X19=010011, 
-X20=010100, X21=010101, X22=010110, X23=010111, X24=011000, X25=011001, X26=011010, 
-X27=011011, X28=011100, X29=011101, X30=011110, X31=011111};
+// enum registers{X0=000000, X1=000001, X2=000010, X3=000011, X4=000100, X5=000101, 
+// X6=000110, X7=000111, X8=001000, X9=001001, X10=001010, X11=001011, X12=001100, 
+// X13=001101, X14=001110, X15=001111, X16=010000, X17=010001, X18=010010, X19=010011, 
+// X20=010100, X21=010101, X22=010110, X23=010111, X24=011000, X25=011001, X26=011010, 
+// X27=011011, X28=011100, X29=011101, X30=011110, X31=011111};
 // enum registers{X0, X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13,
 // X14, X15, X16, X17, X18, X19, X20, X21, X22, X23, X24, X25, X26, X27, X28,
 // X29, X30, X31};
-enum registers reg;
+// enum registers reg;
  
 
-uint8_t = X0
+// uint8_t = X0
 
 
 
@@ -89,6 +86,7 @@ void B.cond
 {
 
 }
+
 
 // Branch and link (jumps to address and stores PC in LR) PC is "program counter", 
 // special register that stores the address of the current instruction
