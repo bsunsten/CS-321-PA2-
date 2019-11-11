@@ -107,7 +107,8 @@ uint32_t checkInstruction(uint32_t input){
     //SUB
     if(opcode == 1624){
 
-        LDUR(input);
+        //LDUR(input);
+        SUB(input)
 
     }
 
@@ -115,32 +116,32 @@ uint32_t checkInstruction(uint32_t input){
     //SUBI
     if(opcode >= 1672 && opcode <= 1673){
 
-        LDUR(input);
+        SUBI(input);
 
     }
 
     //STUR
     if(opcode == 1984){
 
-        LDUR(input);
+        STUR(input);
 
     }
     //STURB
     if(opcode == 448){
 
-        LDUR(input);
+        STURB(input);
 
     }
     //STURH
     if(opcode == 960){
 
-        LDUR(input);
+        STURH(input);
 
     }
     //STURW
     if(opcode == 1472){
 
-        LDUR(input);
+        STURW(input);
 
     }
 
