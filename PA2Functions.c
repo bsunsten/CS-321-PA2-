@@ -49,7 +49,7 @@ void ANDI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 void B(String label)
 {   
     //PC= PC + BranchAddr
-    //BL(label);
+    goto label;
 }
 
 
@@ -76,6 +76,7 @@ void B.cond(String label)
 {
     // if (FLAGS==cond)
     //PC= PC + CondBranchAddr
+
     case 0:
         B.EQ(label);
     case 1:
@@ -235,6 +236,7 @@ void BL(String label)
 {
     //R[30]=PC+4
     //PC= PC + BranchAddr //PC=PC+10000
+    goto label;
 }
 
 
@@ -247,6 +249,7 @@ void BL(String label)
 void BR(uint32_t reg1)
 {
     //PC=R[Rt];
+    //goto X30;
 }
 
 
