@@ -42,3 +42,24 @@ void SUBI(uint32_t reg1, uint32_t reg2, uint16_t imm)
     reg1 = reg2 - imm;
 
 }
+void STUR (uint32_t opcode){
+
+    printf("Test STUR");
+
+}
+void STURB (uint32_t opcode){
+
+    printf("Test STURB");
+
+}
+void STURH (uint32_t opcode){
+
+    printf("Test STURH");
+
+}
+
+void STURW (uint32_t opcode){
+
+    printf("Test STURW");
+
+}
