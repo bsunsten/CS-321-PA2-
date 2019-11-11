@@ -3,6 +3,19 @@
 #include<inttypes.h>
 #include "PA2Functions.h"
 
+// Array to hold all the instructions that occur
+String[] instrArr = new String[50];
+int index = 0;
+
+
+// print all the instructions 
+void printInstrArr(String[] arr)
+{
+    for(i=0; i < sizeof(arr); i++)
+    {
+       printf( "%s \n", array[i]); 
+    }
+}
 
 
 char printable_char(uint8_t c)
@@ -13,11 +26,14 @@ char printable_char(uint8_t c)
 
 void hexdump(FILE *f, int8_t *start, size_t size)
 {
-  size_t i;
+    printf("Hex Dump was run");  
+    instrArr[index]= "Hex Dump";  
+    index++; 
+    size_t i;
 
-  for (i = 0; i < size - (size % 16); i += 16) 
-  {
-    fprintf(f,
+    for (i = 0; i < size - (size % 16); i += 16) 
+    {
+      fprintf(f,
             "%08x "
             " %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx "
             " %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx "
@@ -35,9 +51,9 @@ void hexdump(FILE *f, int8_t *start, size_t size)
             printable_char(start[i + 10]), printable_char(start[i + 11]),
             printable_char(start[i + 12]), printable_char(start[i + 13]),
             printable_char(start[i + 14]), printable_char(start[i + 15]));
-  }
+   }
   
-  fprintf(f, "%08x\n", (int32_t) size);
+    fprintf(f, "%08x\n", (int32_t) size);
 }
 
 
@@ -46,6 +62,10 @@ void hexdump(FILE *f, int8_t *start, size_t size)
 // X1 = X2 + X3
 void ADD(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 {
+    printf("ADD was run");  
+    instrArr[index]= "ADD";  
+    index++;   
+  
     reg1 = reg2 + reg3;
     // update reg1 values
 } 
@@ -58,6 +78,10 @@ void ADD(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 // X1 = X2 + imm76
 void ADDI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 {
+    printf("ADDI was run");  
+    instrArr[index]= "ADDI";  
+    index++;   
+  
     reg1 = reg2 + imm;
     //update reg1 value
 }
@@ -68,6 +92,10 @@ void ADDI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 // bit by bit AND
 void AND(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 {
+    printf("AND was run");  
+    instrArr[index]= "AND";  
+    index++; 
+  
     reg1 = reg2 & reg3;
     //update reg1 value
 }
@@ -77,6 +105,10 @@ void AND(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 // X1 = X2 & imm
 void ANDI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 {
+    printf("ANDI was run");  
+    instrArr[index]= "ANDI";  
+    index++;   
+  
     reg1 = reg2 & imm;
     //update reg1 value
 }
@@ -85,8 +117,12 @@ void ANDI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 //B (branch) jumps unconditionally, takes a label
 void B(String label)
 {   
+    printf("B was run");  
+    instrArr[index]= "B";  
+    index++; 
+  
     //PC= PC + BranchAddr
-    goto label;
+    goto label;    
 }
 
 
@@ -112,10 +148,13 @@ void B(String label)
 void B.cond(String label, uint4_t code)
 {
     printf("B.cond was run");
+    instrArr[index]= "B.cond";  
+    index++;
+  
     // if (FLAGS==cond)
     //PC= PC + CondBranchAddr
     
-  switch(code):
+    switch(code):
     {
       case 0:
         B.EQ(label);
@@ -155,7 +194,10 @@ void B.cond(String label, uint4_t code)
 void B.EQ(String label)
 {
     printf("B.EQ was run");
-    B(label);
+    instrArr[index]= "B.EQ";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -164,7 +206,10 @@ void B.EQ(String label)
 void B.NE(String label)
 {
     printf("B.NE was run");
-    B(label);
+    instrArr[index]= "B.NE";  
+    index++;
+  
+    B(label);  
 }
 
 
@@ -174,7 +219,10 @@ void B.NE(String label)
 void B.HS(String label)
 {
     printf("B.HS was run");
-    B(label);
+    instrArr[index]= "B.HS";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -184,7 +232,10 @@ void B.HS(String label)
 void B.LO(String label)
 {
     printf("B.LO was run");
-    B(label);
+    instrArr[index]= "B.LO";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -193,7 +244,10 @@ void B.LO(String label)
 void B.MI(String label)
 {
     printf("B.MI was run");
-    B(label);
+    instrArr[index]= "B.MI";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -202,7 +256,10 @@ void B.MI(String label)
 void B.PL(String label)
 {
     printf("B.PL was run");
-    B(label);
+    instrArr[index]= "B.PL";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -211,7 +268,10 @@ void B.PL(String label)
 void B.VS(String label)
 {
     printf("B.VS was run");
-    B(label);
+    instrArr[index]= "B.VS";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -220,7 +280,10 @@ void B.VS(String label)
 void B.VC(String label)
 {
     printf("B.VC was run");
-    B(label);
+    instrArr[index]= "B.VC";  
+    index++;
+  
+    B(label); 
 }
 
 
@@ -231,7 +294,10 @@ void B.VC(String label)
 void B.HI(String label)
 {
     printf("B.HI was run");
-    B(label);
+    instrArr[index]= "B.HI";  
+    index++;
+  
+    B(label);   
 }
 
 
@@ -242,7 +308,10 @@ void B.HI(String label)
 void B.LS(String label)
 {
     printf("B.LS was run");
-    B(label);
+    instrArr[index]= "B.LS";  
+    index++;
+  
+    B(label);  
 }
 
 
@@ -252,6 +321,9 @@ void B.LS(String label)
 void B.GE(String label)
 {
     printf("B.GE was run");
+    instrArr[index]= "B.GE";  
+    index++;
+  
     B(label);
 }
 
@@ -262,7 +334,10 @@ void B.GE(String label)
 void B.LT(String label)
 {
     printf("B.LT was run");
-    B(label);
+    instrArr[index]= "B.LT";  
+    index++;
+  
+    B(label);  
 }
 
 
@@ -272,6 +347,9 @@ void B.LT(String label)
 void B.GT(String label)
 {
     printf("B.GT was run");
+    instrArr[index]= "B.GT";  
+    index++;
+    
     B(label);
 }
 
@@ -282,6 +360,9 @@ void B.GT(String label)
 void B.LE(String label)
 {
     printf("B.LE was run");
+    instrArr[index]= "B.LE";  
+    index++;
+  
     B(label);
 }
 
@@ -291,13 +372,15 @@ void B.LE(String label)
 void BL(String label)
 {
     printf("BL was run");
+    instrArr[index]= "BL";  
+    index++;
   
     //R[30]=PC+4
     //PC= PC + BranchAddr //PC=PC+10000
     //__current_pc(); 
     get_pc() + 4;
     //get_pc() + ;
-    goto label;
+    goto label; 
 }
 
 
@@ -310,8 +393,10 @@ void BL(String label)
 void BR(uint32_t reg1)
 {
     printf("BR was run");
-  
-    //PC=R[Rt];
+    instrArr[index]= "BR";  
+    index++;
+    
+     //PC=R[Rt];
     //goto X30;
 }
 
@@ -322,13 +407,15 @@ void BR(uint32_t reg1)
 void CBNZ(uint32_t reg1, String label)
 {
     printf("CBNZ was run");
-    
+    instrArr[index]= "CBNZ";  
+    index++;
+  
     if(reg1 != 0)
     {
         //jump to label
         BL(label);
         // PC = PC + CondBranchAddr
-    }
+    } 
 }
 
 
@@ -338,7 +425,9 @@ void CBNZ(uint32_t reg1, String label)
 void CBZ(uint32_t reg1, String label)
 {
     printf("CBZ was run");
-  
+    instrArr[index]= "CBZ";  
+    index++;
+    
     if(reg1 == 0)
     {
         //jump to label
@@ -356,6 +445,8 @@ void CBZ(uint32_t reg1, String label)
 void DUMP(void)
 {
     printf("DUMP was run");
+    instrArr[index]= "DUMP";  
+    index++;
   
     //printf("Reg 0 (X0): %x \n", X0);
     //printf("Reg 1 (X1): %x \n", X1);
@@ -387,7 +478,9 @@ void DUMP(void)
     //printf("Reg 27 (X27): %x \n", X27);
     //printf("Reg 28 (X28): %x \n", X28);
     //printf("Reg 29 (X29): %x \n", X29);
-
+    
+    //print instructions
+    printInstrArr(instrArr);
 }
 
 
