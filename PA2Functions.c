@@ -72,10 +72,14 @@ void B(String label)
 // There is a single bit condition register associated with each of these codes.
 // The branch is taken if and only if the corresponding condition bit is set.  
 // Bits are set and reset by SUBS and SUBIS. 
-void B.cond(String label)
+void B.cond(String label, uint4_t code)
 {
     // if (FLAGS==cond)
     //PC= PC + CondBranchAddr
+    if(cond)
+    {
+        BL(label);
+    }
 
     case 0:
         B.EQ(label);
@@ -236,6 +240,9 @@ void BL(String label)
 {
     //R[30]=PC+4
     //PC= PC + BranchAddr //PC=PC+10000
+    //__current_pc(); 
+    get_pc() + 4;
+    //get_pc() + ;
     goto label;
 }
 
@@ -276,7 +283,7 @@ void CBZ(uint32_t reg1, String label)
     {
         //jump to label
         BL(label);
-        // // PC = PC + CondBranchAddr
+        // PC = PC + CondBranchAddr
     }
 }
 
@@ -286,9 +293,38 @@ void CBZ(uint32_t reg1, String label)
 // the PC-relative offset from the branch instruction). More details below.  
 // This is an R instruction.  The opcode is 11111111110.  
 // All other bits are don't-care. 
-void DUMP
+void DUMP(void)
 {
-    //printf("Reg 0 (X0): ");
+    //printf("Reg 0 (X0): %x \n", X0);
+    //printf("Reg 1 (X1): %x \n", X1);
+    //printf("Reg 2 (X2): %x \n", X2);
+    //printf("Reg 3 (X3): %x \n", X3);
+    //printf("Reg 4 (X4): %x \n", X4);
+    //printf("Reg 5 (X5): %x \n", X5);
+    //printf("Reg 6 (X6): %x \n", X6);
+    //printf("Reg 7 (X7): %x \n", X7);
+    //printf("Reg 8 (X8): %x \n", X8);
+    //printf("Reg 9 (X9): %x \n", X9);
+    //printf("Reg 10 (X10): %x \n", X10);
+    //printf("Reg 11 (X11): %x \n", X11);
+    //printf("Reg 12 (X12): %x \n", X12);
+    //printf("Reg 13 (X13): %x \n", X13);
+    //printf("Reg 14 (X14): %x \n", X14);
+    //printf("Reg 15 (X15): %x \n", X15);
+    //printf("Reg 16 (X16): %x \n", X16);
+    //printf("Reg 17 (X17): %x \n", X17);
+    //printf("Reg 18 (X18): %x \n", X18);
+    //printf("Reg 19 (X19): %x \n", X19);
+    //printf("Reg 20 (X20): %x \n", X20);
+    //printf("Reg 21 (X21): %x \n", X21);
+    //printf("Reg 22 (X22): %x \n", X22);
+    //printf("Reg 23 (X23): %x \n", X23);
+    //printf("Reg 24 (X24): %x \n", X24);
+    //printf("Reg 25 (X25): %x \n", X25);
+    //printf("Reg 26 (X26): %x \n", X26);
+    //printf("Reg 27 (X27): %x \n", X27);
+    //printf("Reg 28 (X28): %x \n", X28);
+    //printf("Reg 29 (X29): %x \n", X29);
 
 }
 
@@ -310,5 +346,41 @@ void EORI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 {
     reg1 = reg2 ^ imm;
     //update reg1 value
+}
+
+
+char printable_char(uint8_t c)
+{
+  return isprint(c) ? c : '.';
+}
+
+
+void hexdump(FILE *f, int8_t *start, size_t size)
+{
+  size_t i;
+
+  for (i = 0; i < size - (size % 16); i += 16) 
+  {
+    fprintf(f,
+            "%08x "
+            " %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx "
+            " %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx %02hhx "
+            " |%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c|\n",
+            (int32_t) i,
+            start[i +  0], start[i +  1], start[i +  2], start[i +  3],
+            start[i +  4], start[i +  5], start[i +  6], start[i +  7],
+            start[i +  8], start[i +  9], start[i + 10], start[i + 11],
+            start[i + 12], start[i + 13], start[i + 14], start[i + 15],
+            printable_char(start[i +  0]), printable_char(start[i +  1]),
+            printable_char(start[i +  2]), printable_char(start[i +  3]),
+            printable_char(start[i +  4]), printable_char(start[i +  5]),
+            printable_char(start[i +  6]), printable_char(start[i +  7]),
+            printable_char(start[i +  8]), printable_char(start[i +  9]),
+            printable_char(start[i + 10]), printable_char(start[i + 11]),
+            printable_char(start[i + 12]), printable_char(start[i + 13]),
+            printable_char(start[i + 14]), printable_char(start[i + 15]));
+  }
+  
+  fprintf(f, "%08x\n", (int32_t) size);
 }
  
