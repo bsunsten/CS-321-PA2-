@@ -153,6 +153,7 @@ void B.cond(String label, uint4_t code)
 // zero (Z) – the result that set the condition code was 0;
 void B.EQ(String label)
 {
+    printf("B.EQ was run");
     B(label);
 }
 
@@ -161,6 +162,7 @@ void B.EQ(String label)
 // zero (Z) – the result that set the condition code was 0;
 void B.NE(String label)
 {
+    printf("B.NE was run");
     B(label);
 }
 
@@ -170,6 +172,7 @@ void B.NE(String label)
 // significant bit or a borrow into the most significant bit.
 void B.HS(String label)
 {
+    printf("B.HS was run");
     B(label);
 }
 
@@ -179,6 +182,7 @@ void B.HS(String label)
 // significant bit or a borrow into the most significant bit
 void B.LO(String label)
 {
+    printf("B.LO was run");
     B(label);
 }
 
@@ -187,6 +191,7 @@ void B.LO(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.MI(String label)
 {
+    printf("B.MI was run");
     B(label);
 }
 
@@ -195,6 +200,7 @@ void B.MI(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.PL(String label)
 {
+    printf("B.PL was run");
     B(label);
 }
 
@@ -203,6 +209,7 @@ void B.PL(String label)
 // overflow (V) – the result that set the condition code overflowed;
 void B.VS(String label)
 {
+    printf("B.VS was run");
     B(label);
 }
 
@@ -211,6 +218,7 @@ void B.VS(String label)
 // overflow (V) – the result that set the condition code overflowed; 
 void B.VC(String label)
 {
+    printf("B.VC was run");
     B(label);
 }
 
@@ -221,6 +229,7 @@ void B.VC(String label)
 // zero (Z) – the result that set the condition code was 0;
 void B.HI(String label)
 {
+    printf("B.HI was run");
     B(label);
 }
 
@@ -231,6 +240,7 @@ void B.HI(String label)
 // zero (Z) – the result that set the condition code was 0;
 void B.LS(String label)
 {
+    printf("B.LS was run");
     B(label);
 }
 
@@ -240,6 +250,7 @@ void B.LS(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.GE(String label)
 {
+    printf("B.GE was run");
     B(label);
 }
 
@@ -249,6 +260,7 @@ void B.GE(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.LT(String label)
 {
+    printf("B.LT was run");
     B(label);
 }
 
@@ -258,6 +270,7 @@ void B.LT(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.GT(String label)
 {
+    printf("B.GT was run");
     B(label);
 }
 
@@ -267,6 +280,7 @@ void B.GT(String label)
 // negative (N) – the result that set the condition code had a 1 in the most significant bit;
 void B.LE(String label)
 {
+    printf("B.LE was run");
     B(label);
 }
 
@@ -275,6 +289,8 @@ void B.LE(String label)
 // special register that stores the address of the current instruction
 void BL(String label)
 {
+    printf("BL was run");
+  
     //R[30]=PC+4
     //PC= PC + BranchAddr //PC=PC+10000
     //__current_pc(); 
@@ -292,6 +308,8 @@ void BL(String label)
 // LR is register X30
 void BR(uint32_t reg1)
 {
+    printf("BR was run");
+  
     //PC=R[Rt];
     //goto X30;
 }
@@ -302,6 +320,8 @@ void BR(uint32_t reg1)
 // CBNZ X1, label
 void CBNZ(uint32_t reg1, String label)
 {
+    printf("CBNZ was run");
+    
     if(reg1 != 0)
     {
         //jump to label
@@ -316,6 +336,8 @@ void CBNZ(uint32_t reg1, String label)
 // CBX X1, label
 void CBZ(uint32_t reg1, String label)
 {
+    printf("CBZ was run");
+  
     if(reg1 == 0)
     {
         //jump to label
@@ -332,6 +354,8 @@ void CBZ(uint32_t reg1, String label)
 // All other bits are don't-care. 
 void DUMP(void)
 {
+    printf("DUMP was run");
+  
     //printf("Reg 0 (X0): %x \n", X0);
     //printf("Reg 1 (X1): %x \n", X1);
     //printf("Reg 2 (X2): %x \n", X2);
@@ -371,6 +395,8 @@ void DUMP(void)
 // X1 = X2 ^ X3
 void EOR(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 {
+    printf("EOR was run");
+  
     reg1 = reg2 ^ reg3;
     //update reg1 value
 }
@@ -381,6 +407,8 @@ void EOR(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 // // X1 = X2 ^ imm
 // void EORI(uint32_t reg1, uint32_t reg2, uint16_t imm)
 // {
+//     printf("EORI was run");
+
 //     reg1 = reg2 ^ imm;
 //     //update reg1 value
 // }
