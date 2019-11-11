@@ -6,6 +6,8 @@
 #include <math.h>
 #include "ThirdSetFunctions.c"
 #include "PA2Functions.c"
+#include "PA2Functions.h"
+
 
 
 uint32_t decimalToBinary(uint32_t n);
@@ -13,6 +15,7 @@ uint32_t checkInstruction(uint32_t input);
 
 
 int main (int argc, char *argv[]) {
+
 
     //TODO: Implement get value from parsed cmd argument
     int memsize = 1024;
@@ -90,6 +93,7 @@ uint32_t checkInstruction(uint32_t input){
 
         EORI(input);
 
+  
     }
 
     //HALT
@@ -149,15 +153,4 @@ uint32_t checkInstruction(uint32_t input){
 
     return opcode;
 }
-
-
-
-
-
-
-
-
-
-}
-
 
