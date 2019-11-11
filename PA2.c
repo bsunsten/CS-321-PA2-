@@ -4,6 +4,8 @@
 #include <inttypes.h>
 #include <endian.h>
 #include <math.h>
+#include "ThirdSetFunctions.c"
+#include "PA2Functions.c"
 
 
 uint32_t decimalToBinary(uint32_t n);
