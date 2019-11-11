@@ -111,41 +111,42 @@ void B(String label)
 // Bits are set and reset by SUBS and SUBIS. 
 void B.cond(String label, uint4_t code)
 {
+    printf("B.cond was run");
     // if (FLAGS==cond)
     //PC= PC + CondBranchAddr
-    if(cond)
+    
+  switch(code):
     {
-        BL(label);
-    }
-
-    case 0:
+      case 0:
         B.EQ(label);
-    case 1:
+      case 1:
         B.NE(label);
-    case 2:
+      case 2:
         B.HS(label);
-    case 3:
+      case 3:
         B.LO(label);
-    case 4:
+      case 4:
         B.MI(label);
-    case 5:
+      case 5:
         B.PL(label);
-    case 6:
+      case 6:
         B.VS(label);
-    case 7:
+      case 7:
         B.VC(label);
-    case 8:
+      case 8:
         B.HI(label);
-    case 9:
+      case 9:
         B.LS(label);
-    case 'a':
+      case 'a':
         B.GE(label);
-    case 'b':
+      case 'b':
         B.LT(label);
-    case 'c':
+      case 'c':
         B.GT(label);
-    case 'd':
+      case 'd':
         B.LE(label);
+      default:
+    }
 }
 
 
@@ -402,16 +403,16 @@ void EOR(uint32_t reg1, uint32_t reg2, uint32_t reg3)
 }
 
 
-// // Exclusive or
-// // EORI X1, X2, imm
-// // X1 = X2 ^ imm
-// void EORI(uint32_t reg1, uint32_t reg2, uint16_t imm)
-// {
-//     printf("EORI was run");
+// Exclusive or
+// EORI X1, X2, imm
+// X1 = X2 ^ imm
+void EORI(uint32_t reg1, uint32_t reg2, uint16_t imm)
+{
+    printf("EORI was run");
 
-//     reg1 = reg2 ^ imm;
-//     //update reg1 value
-// }
+    reg1 = reg2 ^ imm;
+    //update reg1 value
+}
  
 
 void EORI (uint32_t opcode){
