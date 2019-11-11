@@ -1,6 +1,7 @@
 #include "PA2Functions.c"
 #include "PA2.c"
 
+void printInstrArr(String[] arr);
 char printable_char(uint8_t c);
 void hexdump(FILE *f, int8_t *start, size_t size);
 void ADD(uint32_t reg1, uint32_t reg2, uint32_t reg3);
